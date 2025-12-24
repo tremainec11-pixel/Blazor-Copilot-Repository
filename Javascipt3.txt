@@ -1,0 +1,15 @@
+function EventCard({ event, onView, onRegister }) {
+  return (
+    <article className="event-card">
+      <h3 className="event-title">{event.name}</h3>
+      <div className="event-meta">
+        <span className="pill">{new Date(event.date).toLocaleDateString()}</span>
+        <span className="pill">{event.location}</span>
+      </div>
+      <div className="event-actions">
+        <button className="primary" onClick={() => onView(event)}>View Details</button>
+        <button className="secondary" onClick={() => onRegister(event)}>Register</button>
+      </div>
+    </article>
+  );
+}

@@ -1,0 +1,107 @@
+<div id="eventsGrid"></div>
+
+<script>
+const events = [
+  { id: "evt-001", name: "Paseo Nocturno Navideño", date: "2025-12-20", location: "Ciudad de México" },
+  { id: "evt-002", name: "Quimeras Modernistas Exhibition", date: "2025-12-23", location: "Cuauhtémoc, CDMX" },
+  { id: "evt-003", name: "New Year’s Eve Gala", date: "2025-12-31", location: "Centro Histórico, CDMX" }
+];
+
+function renderEventCard(event) {
+  const card = document.createElement("article");
+  card.className = "event-card";
+
+  card.innerHTML = `
+    <h3>${event.name}</h3>
+    <p>📅 ${new Date(event.date).toLocaleDateString()}</p>
+    <p>📍 ${event.location}</p>
+    <div class="event-actions">
+      <button class="view-btn">View Details</button>
+      <button class="register-btn">Register</button>
+    </div>
+  `;
+
+  // Refined binding: attach listeners directly
+  card.querySelector(".view-btn").addEventListener("click", () => viewDetails(event));
+  card.querySelector(".register-btn").addEventListener("click", () => register(event));
+
+  return card;
+}
+
+function renderEvents(events) {
+  const grid = document.getElementById("eventsGrid");
+  grid.innerHTML = "";
+  events.forEach(ev => grid.appendChild(renderEventCard(ev)));
+}
+
+function viewDetails(event) {
+  console.log("Viewing:", event);
+}
+function register(event) {
+  console.log("Registering:", event);
+}
+
+renderEvents(events);
+</script>
+
+function EventCard({ event, onView, onRegister }) {
+  return (
+    <article className="event-card">
+      <h3>{event.name}</h3>
+      <p>📅 {new Date(event.date).toLocaleDateString()}</p>
+      <p>📍 {event.location}</p>
+      <div className="event-actions">
+        <button onClick={() => onView(event)}>View Details</button>
+        <button onClick={() => onRegister(event)}>Register</button>
+      </div>
+    </article>
+  );
+}
+
+function EventList() {
+  const mockEvents = [
+    { id: "evt-001", name: "Paseo Nocturno Navideño", date: "2025-12-20", location: "Ciudad de México" },
+    { id: "evt-002", name: "Quimeras Modernistas Exhibition", date: "2025-12-23", location: "Cuauhtémoc, CDMX" },
+    { id: "evt-003", name: "New Year’s Eve Gala", date: "2025-12-31", location: "Centro Histórico, CDMX" }
+  ];
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+function Nav() {
+  return (
+    <nav>
+      <Link to="/events">Events</Link>
+      <Link to="/about">About</Link>
+    </nav>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path="/events" element={<EventList />} />
+        <Route path="/events/:id" element={<EventDetails />} />
+        <Route path="/register/:id" element={<RegistrationForm />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+  const handleView = (event) => console.log("Viewing", event);
+  const handleRegister = (event) => console.log("Registering", event);
+
+  return (
+    <div className="events-grid">
+      {mockEvents.map(ev => (
+        <EventCard
+          key={ev.id}
+          event={ev}
+          onView={handleView}
+          onRegister={handleRegister}
+        />
+      ))}
+    </div>
+  );
+}
+

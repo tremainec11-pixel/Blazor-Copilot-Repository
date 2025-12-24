@@ -1,0 +1,34 @@
+<!-- index.html -->
+<div id="app"></div>
+
+<script type="module">
+import { renderList, renderDetails, renderRegistration } from './views.js';
+
+const app = document.getElementById('app');
+
+function navigate(view, data) {
+  if (view === 'list') renderList(app, navigate);
+  if (view === 'details') renderDetails(app, data, navigate);
+  if (view === 'register') renderRegistration(app, data, navigate);
+}
+
+// Start at event list
+navigate('list');
+</script>
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EventList from "./EventList";
+import EventDetails from "./EventDetails";
+import RegistrationForm from "./RegistrationForm";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/events" element={<EventList />} />
+        <Route path="/events/:id" element={<EventDetails />} />
+        <Route path="/register/:id" element={<RegistrationForm />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}

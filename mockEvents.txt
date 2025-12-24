@@ -1,0 +1,27 @@
+const mockEvents = [
+  { id: "evt-001", name: "Paseo Nocturno Navideño", date: "2025-12-20", location: "Ciudad de México" },
+  { id: "evt-002", name: "Quimeras Modernistas Exhibition", date: "2025-12-23", location: "Cuauhtémoc, CDMX" },
+  { id: "evt-003", name: "New Year’s Eve Gala", date: "2025-12-31", location: "Centro Histórico, CDMX" }
+];
+
+function EventCard({ event }) {
+  return (
+    <article className="event-card">
+      <h3>{event.name}</h3>
+      <p>📅 {new Date(event.date).toLocaleDateString()}</p>
+      <p>📍 {event.location}</p>
+      <div className="event-actions">
+        <button onClick={() => console.log("Viewing", event.id)}>View Details</button>
+        <button onClick={() => console.log("Registering", event.id)}>Register</button>
+      </div>
+    </article>
+  );
+}
+
+function EventList() {
+  return (
+    <div className="events-grid">
+      {mockEvents.map(ev => <EventCard key={ev.id} event={ev} />)}
+    </div>
+  );
+}

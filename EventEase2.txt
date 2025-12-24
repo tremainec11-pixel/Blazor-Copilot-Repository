@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Event Browser</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Browse Events</h1>
+    <p class="subtitle">Find events by name, date, and location.</p>
+  </header>
+
+  <section class="controls">
+    <div class="control-row">
+      <label for="search">Search</label>
+      <input id="search" type="search" placeholder="Search by event name…" />
+    </div>
+
+    <div class="control-row">
+      <label for="location">Location</label>
+      <select id="location">
+        <option value="">All locations</option>
+      </select>
+    </div>
+
+    <div class="control-row">
+      <label for="startDate">Start date</label>
+      <input id="startDate" type="date" />
+    </div>
+
+    <div class="control-row">
+      <label for="endDate">End date</label>
+      <input id="endDate" type="date" />
+    </div>
+
+    <div class="control-row">
+      <label for="sort">Sort</label>
+      <select id="sort">
+        <option value="date-asc">Date (earliest first)</option>
+        <option value="date-desc">Date (latest first)</option>
+        <option value="name-asc">Name (A–Z)</option>
+        <option value="name-desc">Name (Z–A)</option>
+      </select>
+    </div>
+
+    <div class="control-actions">
+      <button id="clearFilters" class="secondary">Clear</button>
+    </div>
+  </section>
+
+  <main>
+    <div id="resultsSummary" class="results-summary" aria-live="polite"></div>
+    <div id="eventsGrid" class="events-grid"></div>
+    <div id="emptyState" class="empty-state" hidden>
+      <h3>No events match your filters</h3>
+      <p>Try clearing filters or searching with different keywords.</p>
+      <button id="resetFromEmpty" class="secondary">Reset filters</button>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <small>Built for quick browsing and discovery. You can connect an API later.</small>
+  </footer>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+.event-card {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.event-title {
+  margin: 0;
+  font-size: 18px;
+  color: #e5e7eb;
+}
+
+.event-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid #1f2937;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: #e5e7eb;
+}
+
+.event-actions {
+  display: flex;
+  gap: 10px;
+}
+
+button.primary {
+  background: #22c55e;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: transparent;
+  border: 1px solid #374151;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: #e5e7eb;
+  cursor: pointer;
+}
